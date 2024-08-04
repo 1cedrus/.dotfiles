@@ -106,7 +106,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 function cd_with_fzf_in_workspaces {
-	cd "$(~/WorkSpaces/personal/tmp/tmux-sessionizer)" && echo "$PWD" 
+	cd "$(.scripts/tmux-sessionizer)" && echo "$PWD" 
 }
 
 zle -N cd_with_fzf_in_workspaces
