@@ -20,15 +20,88 @@ cmp.setup({
     })
 })
 
--- to learn how to use mason.nvim
--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'clangd', 'tsserver', 'rust_analyzer', 'gopls' },
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
+  ensure_installed = { 'clangd', 'ts_ls', 'rust_analyzer', 'gopls', 'denols' },
 })
+
+local nvim_lsp = require('lspconfig')
+
+nvim_lsp.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+}
+
+nvim_lsp.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      assist = {
+        importMergeBehavior = "last",
+        importPrefix = "by_self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true
+      },
+      procMacro = {
+        enable = true
+      },
+    }
+  }
+}
+
+nvim_lsp.clangd.setup{
+  capabilities = capabilities,
+  filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
+  init_options = {
+    usePlaceholders = true, 
+    completeUnimported = true,
+  }
+}
+
+nvim_lsp.denols.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+nvim_lsp.ts_ls.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  single_file_support = false
+}
+
+-- nvim_lsp.pylsp.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         pycodestyle = { enabled = false },
+--         pyflakes = { enabled = false },
+--         pylint = { enabled = true },
+--         yapf = { enabled = false },
+--         flake8 = { enabled = false },
+--         jedi = { enabled = true },
+--         mccabe = { enabled = false },
+--         mypy = { enabled = false },
+--         pep8 = { enabled = false },
+--         pydocstyle = { enabled = false },
+--         rope = { enabled = false },
+--         yapf = { enabled = false },
+--       }
+--     }
+--   }
+-- }
+
+
+
 

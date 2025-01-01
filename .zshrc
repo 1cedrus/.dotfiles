@@ -106,7 +106,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 function cd_with_fzf_in_workspaces {
-	cd "$(.scripts/tmux-sessionizer)" && echo "$PWD" 
+	cd "$(~/.scripts/tmux-sessionizer)" && echo "$PWD" 
 }
 
 zle -N cd_with_fzf_in_workspaces
@@ -122,4 +122,10 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias get_idf=". $HOME/esp/esp-idf/export.sh"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 

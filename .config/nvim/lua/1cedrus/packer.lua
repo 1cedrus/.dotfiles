@@ -47,4 +47,6 @@ return require('packer').startup(function(use)
   use ('vim-test/vim-test')
 
   use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
+
+  use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
 end)

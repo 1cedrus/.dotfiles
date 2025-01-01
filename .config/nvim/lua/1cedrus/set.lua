@@ -18,3 +18,5 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 
 vim.opt.scrolloff = 8
+
+vim.env.ARDUINO_CONFIG_DIR = "~/.arduinoIDE/arduino-cli.yaml"

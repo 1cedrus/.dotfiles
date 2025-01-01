@@ -1,4 +1,4 @@
-vim.g.mapleader = " " 
+vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
@@ -8,7 +8,7 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-w>", "<C-u>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -39,5 +39,5 @@ vim.keymap.set("n", "<leader>.", function ()
 end)
 
 -- Should find a way to do it!
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww 'cd $(~/WorkSpaces/personal/tmp/tmux-sessionizer); exec $SHELL'<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww 'cd $(~/.scripts/tmux-sessionizer); exec $SHELL'<CR>")
 
