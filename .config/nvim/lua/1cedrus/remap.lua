@@ -39,5 +39,5 @@ vim.keymap.set("n", "<leader>.", function ()
 end)
 
 -- Should find a way to do it!
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww 'cd $(~/.scripts/tmux-sessionizer); exec $SHELL'<CR>")
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww 'cd $(~/.scripts/tmux-sessionizer); exec $SHELL'<CR>")
 
